@@ -1,0 +1,372 @@
+<!-- 
+  Magical Winter Wonderland with Snowman
+  - Charming animated snowman
+  - Slow gentle animations
+  - No background - transparent
+  - Peaceful snowfall
+  - Relaxing winter scene
+-->
+<svg viewBox="-400 -250 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Enhanced snowflake gradients -->
+    <radialGradient id="snowflake1" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="60%" stop-color="#f8f8ff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#e6e6fa" stop-opacity="0.7" />
+    </radialGradient>
+
+    <radialGradient id="snowflake2" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+      <stop offset="70%" stop-color="#f0f8ff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#dcdcdc" stop-opacity="0.6" />
+    </radialGradient>
+
+    <radialGradient id="sparkleSnow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="50%" stop-color="#e0f6ff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#b3e5fc" stop-opacity="0.4" />
+    </radialGradient>
+
+    <!-- Snowman gradients -->
+    <radialGradient id="snowmanBody" cx="40%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="70%" stop-color="#f8f8ff" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#e8e8e8" stop-opacity="0.9" />
+    </radialGradient>
+
+    <radialGradient id="carrotNose" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ff8c00" />
+      <stop offset="60%" stop-color="#ff7700" />
+      <stop offset="100%" stop-color="#cc5500" />
+    </radialGradient>
+
+    <linearGradient id="hatGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2c2c2c" />
+      <stop offset="50%" stop-color="#1a1a1a" />
+      <stop offset="100%" stop-color="#0d0d0d" />
+    </linearGradient>
+
+    <radialGradient id="scarf" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ff4444" />
+      <stop offset="50%" stop-color="#dd3333" />
+      <stop offset="100%" stop-color="#aa2222" />
+    </radialGradient>
+
+    <!-- Ground gradients -->
+    <linearGradient id="groundSnow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+      <stop offset="30%" stop-color="#f8f8ff" stop-opacity="0.9" />
+      <stop offset="70%" stop-color="#f0f0f0" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#e8e8e8" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Magical sparkle effect -->
+    <filter id="sparkle" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Snowflake patterns -->
+    <g id="detailFlake1">
+      <circle cx="0" cy="0" r="2.5" fill="url(#snowflake1)" />
+      <line x1="-2.5" y1="0" x2="2.5" y2="0" stroke="#ffffff" stroke-width="0.4" opacity="0.9" />
+      <line x1="0" y1="-2.5" x2="0" y2="2.5" stroke="#ffffff" stroke-width="0.4" opacity="0.9" />
+      <line x1="-1.8" y1="-1.8" x2="1.8" y2="1.8" stroke="#ffffff" stroke-width="0.3" opacity="0.7" />
+      <line x1="-1.8" y1="1.8" x2="1.8" y2="-1.8" stroke="#ffffff" stroke-width="0.3" opacity="0.7" />
+      <circle cx="0" cy="0" r="0.5" fill="#ffffff" opacity="0.9" />
+    </g>
+
+    <g id="sparkleFlake">
+      <circle cx="0" cy="0" r="1.5" fill="url(#sparkleSnow)" />
+      <polygon points="0,-2 0.6,-0.6 2,0 0.6,0.6 0,2 -0.6,0.6 -2,0 -0.6,-0.6" 
+               fill="#ffffff" opacity="0.8" />
+    </g>
+
+    <g id="simpleFlake">
+      <circle cx="0" cy="0" r="1.2" fill="url(#snowflake2)" />
+    </g>
+
+    <!-- Winter trees silhouette -->
+    <g id="winterTree">
+      <polygon points="0,-30 -8,-10 -12,0 12,0 8,-10" fill="#2c5530" opacity="0.6" />
+      <polygon points="0,-25 -6,-8 -10,5 10,5 6,-8" fill="#2c5530" opacity="0.5" />
+      <rect x="-1" y="0" width="2" height="8" fill="#4a3c2a" opacity="0.7" />
+    </g>
+  </defs>
+
+  <!-- Distant winter trees -->
+  <g opacity="0.4">
+    <use href="#winterTree" x="-320" y="200" transform="scale(0.8)" />
+    <use href="#winterTree" x="-280" y="195" transform="scale(1.1)" />
+    <use href="#winterTree" x="-240" y="205" transform="scale(0.9)" />
+    <use href="#winterTree" x="240" y="200" transform="scale(1.2)" />
+    <use href="#winterTree" x="280" y="195" transform="scale(0.7)" />
+    <use href="#winterTree" x="320" y="208" transform="scale(1.0)" />
+  </g>
+
+  <!-- Ground snow with rolling hills -->
+  <g>
+    <ellipse cx="0" cy="280" rx="400" ry="60" fill="url(#groundSnow)" opacity="0.9" />
+    <ellipse cx="-150" cy="275" rx="200" ry="40" fill="url(#groundSnow)" opacity="0.8" />
+    <ellipse cx="120" cy="278" rx="180" ry="35" fill="url(#groundSnow)" opacity="0.85" />
+    
+    <!-- Snow drifts around snowman -->
+    <ellipse cx="0" cy="240" rx="80" ry="20" fill="url(#snowmanBody)" opacity="0.7" />
+    <ellipse cx="-40" cy="245" rx="50" ry="15" fill="url(#snowmanBody)" opacity="0.6" />
+    <ellipse cx="45" cy="242" rx="60" ry="18" fill="url(#snowmanBody)" opacity="0.65" />
+  </g>
+
+  <!-- Snowman with gentle slow animations -->
+  <g id="snowman">
+    <!-- Bottom snowball -->
+    <circle cx="0" cy="180" r="45" fill="url(#snowmanBody)" stroke="#e8e8e8" stroke-width="0.5">
+      <animate attributeName="cy" values="180;178;180" dur="20s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- Middle snowball -->
+    <circle cx="0" cy="120" r="35" fill="url(#snowmanBody)" stroke="#e8e8e8" stroke-width="0.5">
+      <animate attributeName="cy" values="120;118;120" dur="20s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- Head with gentle bobbing animation -->
+    <circle cx="0" cy="75" r="25" fill="url(#snowmanBody)" stroke="#e8e8e8" stroke-width="0.5">
+      <animate attributeName="cy" values="75;73;75" dur="20s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- Hat with head movement -->
+    <g>
+      <animate attributeName="transform" values="translate(0,0);translate(0,-2);translate(0,0)" dur="20s" repeatCount="indefinite" />
+      <ellipse cx="0" cy="85" rx="28" ry="3" fill="url(#hatGradient)" />
+      <rect x="-20" y="50" width="40" height="35" rx="2" fill="url(#hatGradient)" />
+      <rect x="-22" y="80" width="44" height="8" rx="1" fill="url(#hatGradient)" />
+    </g>
+    
+    <!-- Eyes with slow blinking animation -->
+    <g>
+      <animate attributeName="transform" values="translate(0,0);translate(0,-2);translate(0,0)" dur="20s" repeatCount="indefinite" />
+      <circle cx="-8" cy="70" r="3" fill="#2c2c2c">
+        <animate attributeName="ry" values="3;0.5;3" dur="25s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="8" cy="70" r="3" fill="#2c2c2c">
+        <animate attributeName="ry" values="3;0.5;3" dur="25s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="-8" cy="69" r="1" fill="#ffffff" opacity="0.8" />
+      <circle cx="8" cy="69" r="1" fill="#ffffff" opacity="0.8" />
+    </g>
+    
+    <!-- Carrot nose with subtle wiggling -->
+    <polygon points="0,78 12,82 0,86" fill="url(#carrotNose)">
+      <animateTransform attributeName="transform" values="rotate(0);rotate(0.5);rotate(-0.5);rotate(0)" dur="30s" repeatCount="indefinite" />
+      <animate attributeName="transform" values="translate(0,-2);translate(0,0);translate(0,-2)" dur="20s" repeatCount="indefinite" additive="sum" />
+    </polygon>
+    
+    <!-- Smile with head movement -->
+    <g>
+      <animate attributeName="transform" values="translate(0,0);translate(0,-2);translate(0,0)" dur="20s" repeatCount="indefinite" />
+      <circle cx="-8" cy="88" r="1.5" fill="#2c2c2c" />
+      <circle cx="-3" cy="90" r="1.5" fill="#2c2c2c" />
+      <circle cx="3" cy="90" r="1.5" fill="#2c2c2c" />
+      <circle cx="8" cy="88" r="1.5" fill="#2c2c2c" />
+    </g>
+    
+    <!-- Scarf with gentle floating animation -->
+    <g>
+      <animate attributeName="transform" values="translate(0,0);translate(0,-2);translate(0,0)" dur="20s" repeatCount="indefinite" />
+      <ellipse cx="0" cy="95" rx="30" ry="8" fill="url(#scarf)" />
+      <ellipse cx="0" cy="95" rx="28" ry="6" fill="url(#scarf)" opacity="0.8" />
+      <rect x="20" y="90" width="8" height="35" fill="url(#scarf)" transform="rotate(15)">
+        <animateTransform attributeName="transform" values="rotate(15);rotate(17);rotate(13);rotate(15)" dur="35s" repeatCount="indefinite" />
+      </rect>
+    </g>
+    
+    <!-- Arms with gentle waving animation -->
+    <line x1="-35" y1="115" x2="-55" y2="105" stroke="#4a3c2a" stroke-width="3" stroke-linecap="round">
+      <animateTransform attributeName="transform" values="rotate(0,-35,115);rotate(-3,-35,115);rotate(0,-35,115)" dur="18s" repeatCount="indefinite" />
+      <animate attributeName="y1" values="115;113;115" dur="20s" repeatCount="indefinite" />
+    </line>
+    <line x1="-50" y1="108" x2="-58" y2="100" stroke="#4a3c2a" stroke-width="2" stroke-linecap="round">
+      <animateTransform attributeName="transform" values="rotate(0,-50,108);rotate(-2,-50,108);rotate(0,-50,108)" dur="18s" repeatCount="indefinite" />
+      <animate attributeName="y1" values="108;106;108" dur="20s" repeatCount="indefinite" />
+    </line>
+    
+    <line x1="35" y1="115" x2="55" y2="105" stroke="#4a3c2a" stroke-width="3" stroke-linecap="round">
+      <animateTransform attributeName="transform" values="rotate(0,35,115);rotate(3,35,115);rotate(0,35,115)" dur="22s" repeatCount="indefinite" />
+      <animate attributeName="y1" values="115;113;115" dur="20s" repeatCount="indefinite" />
+    </line>
+    <line x1="50" y1="108" x2="58" y2="100" stroke="#4a3c2a" stroke-width="2" stroke-linecap="round">
+      <animateTransform attributeName="transform" values="rotate(0,50,108);rotate(2,50,108);rotate(0,50,108)" dur="22s" repeatCount="indefinite" />
+      <animate attributeName="y1" values="108;106;108" dur="20s" repeatCount="indefinite" />
+    </line>
+    
+    <!-- Buttons with body movement -->
+    <g>
+      <animate attributeName="transform" values="translate(0,0);translate(0,-2);translate(0,0)" dur="20s" repeatCount="indefinite" />
+      <circle cx="0" cy="130" r="3" fill="#2c2c2c" />
+      <circle cx="0" cy="145" r="3" fill="#2c2c2c" />
+      <circle cx="0" cy="160" r="3" fill="#2c2c2c" />
+    </g>
+  </g>
+
+  <!-- Gentle magical sparkles around snowman -->
+  <g opacity="0.6" filter="url(#sparkle)">
+    <circle cx="-60" cy="60" r="2" fill="url(#sparkleSnow)">
+      <animate attributeName="opacity" values="0;1;0" dur="12s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" values="0;360" dur="25s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="70" cy="80" r="1.5" fill="url(#sparkleSnow)">
+      <animate attributeName="opacity" values="1;0;1" dur="15s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" values="0;-360" dur="30s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="-40" cy="200" r="2.5" fill="url(#sparkleSnow)">
+      <animate attributeName="opacity" values="0;0.8;0" dur="10s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" values="0;180" dur="20s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="50" cy="40" r="1.8" fill="url(#sparkleSnow)">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="14s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" values="360;0" dur="35s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- Gentle snowfall - background layer -->
+  <g opacity="0.4">
+    <use href="#simpleFlake" x="-180" y="-200">
+      <animateTransform attributeName="transform" type="translate" values="0,-200;-30,500" dur="25s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;0.6;0" dur="25s" repeatCount="indefinite" />
+    </use>
+    
+    <use href="#simpleFlake" x="160" y="-220">
+      <animateTransform attributeName="transform" type="translate" values="0,-220;25,500" dur="22s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;0.5;0" dur="22s" repeatCount="indefinite" />
+    </use>
+    
+    <use href="#simpleFlake" x="-250" y="-180">
+      <animateTransform attributeName="transform" type="translate" values="0,-180;-40,500" dur="30s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;0.4;0" dur="30s" repeatCount="indefinite" />
+    </use>
+    
+    <use href="#simpleFlake" x="220" y="-190">
+      <animateTransform attributeName="transform" type="translate" values="0,-190;35,500" dur="28s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;0.6;0" dur="28s" repeatCount="indefinite" />
+    </use>
+
+    <!-- More gentle falling flakes -->
+    <use href="#simpleFlake" x="-120" y="-240">
+      <animateTransform attributeName="transform" type="translate" values="0,-240;-20,500" dur="35s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;0.5;0" dur="35s" repeatCount="indefinite" />
+    </use>
+    
+    <use href="#simpleFlake" x="140" y="-250">
+      <animateTransform attributeName="transform" type="translate" values="0,-250;22,500" dur="40s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;0.4;0" dur="40s" repeatCount="indefinite" />
+    </use>
+  </g>
+
+  <!-- Medium distance detailed snowflakes -->
+  <g opacity="0.6">
+    <use href="#sparkleFlake" x="-120" y="-210">
+      <animateTransform attributeName="transform" type="translate" values="0,-210;-20,500" dur="20s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" values="0;360" dur="40s" repeatCount="indefinite" additive="sum" />
+      <animate attributeName="opacity" values="0;0.7;0" dur="20s" repeatCount="indefinite" />
+    </use>
+    
+    <use href="#detailFlake1" x="90" y="-230">
+      <animateTransform attributeName="transform" type="translate" values="0,-230;15,500" dur="24s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" values="0;-270" dur="45s" repeatCount="indefinite" additive="sum" />
+      <animate attributeName="opacity" values="0;0.6;0" dur="24s" repeatCount="indefinite" />
+    </use>
+    
+    <use href="#sparkleFlake" x="-60" y="-190">
+      <animateTransform attributeName="transform" type="translate" values="0,-190;-8,500" dur="18s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" values="0;180" dur="30s" repeatCount="indefinite" additive="sum" />
+      <animate attributeName="opacity" values="0;0.8;0" dur="18s" repeatCount="indefinite" />
+    </use>
+    
+    <use href="#detailFlake1" x="130" y="-170">
+      <animateTransform attributeName="transform" type="translate" values="0,-170;22,500" dur="32s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" values="0;-180" dur="50s" repeatCount="indefinite" additive="sum" />
+      <animate attributeName="opacity" values="0;0.5;0" dur="32s" repeatCount="indefinite" />
+    </use>
+  </g>
+
+  <!-- Foreground snowflakes - largest -->
+  <g opacity="0.7">
+    <use href="#detailFlake1" x="-80" y="-200" transform="scale(1.8)">
+      <animateTransform attributeName="transform" type="translate" values="0,-200;-12,500" dur="15s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" values="0;360" dur="25s" repeatCount="indefinite" additive="sum" />
+      <animateTransform attributeName="transform" type="scale" values="1.8;2.0;1.8" dur="15s" repeatCount="indefinite" additive="sum" />
+      <animate attributeName="opacity" values="0;1;0" dur="15s" repeatCount="indefinite" />
+    </use>
+    
+    <use href="#sparkleFlake" x="100" y="-220" transform="scale(2.0)">
+      <animateTransform attributeName="transform" type="translate" values="0,-220;18,500" dur="18s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" values="0;-270" dur="30s" repeatCount="indefinite" additive="sum" />
+      <animateTransform attributeName="transform" type="scale" values="2.0;2.2;2.0" dur="18s" repeatCount="indefinite" additive="sum" />
+      <animate attributeName="opacity" values="0;1;0" dur="18s" repeatCount="indefinite" />
+    </use>
+    
+    <use href="#detailFlake1" x="30" y="-180" transform="scale(1.6)">
+      <animateTransform attributeName="transform" type="translate" values="0,-180;5,500" dur="16s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" values="0;180" dur="35s" repeatCount="indefinite" additive="sum" />
+      <animateTransform attributeName="transform" type="scale" values="1.6;1.9;1.6" dur="16s" repeatCount="indefinite" additive="sum" />
+      <animate attributeName="opacity" values="0;0.9;0" dur="16s" repeatCount="indefinite" />
+    </use>
+  </g>
+
+  <!-- Dense peaceful snowfall -->
+  <g opacity="0.5">
+    <use href="#simpleFlake" x="-300" y="-200">
+      <animateTransform attributeName="transform" type="translate" values="0,-200;-45,500" dur="45s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;0.4;0" dur="45s" repeatCount="indefinite" />
+    </use>
+    
+    <use href="#simpleFlake" x="280" y="-210">
+      <animateTransform attributeName="transform" type="translate" values="0,-210;40,500" dur="42s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;0.5;0" dur="42s" repeatCount="indefinite" />
+    </use>
+    
+    <use href="#sparkleFlake" x="-200" y="-190">
+      <animateTransform attributeName="transform" type="translate" values="0,-190;-32,500" dur="38s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" values="0;360" dur="60s" repeatCount="indefinite" additive="sum" />
+      <animate attributeName="opacity" values="0;0.3;0" dur="38s" repeatCount="indefinite" />
+    </use>
+    
+    <use href="#sparkleFlake" x="250" y="-180">
+      <animateTransform attributeName="transform" type="translate" values="0,-180;38,500" dur="48s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="rotate" values="0;-360" dur="55s" repeatCount="indefinite" additive="sum" />
+      <animate attributeName="opacity" values="0;0.4;0" dur="48s" repeatCount="indefinite" />
+    </use>
+
+    <!-- Additional peaceful scattered flakes -->
+    <use href="#simpleFlake" x="0" y="-240">
+      <animateTransform attributeName="transform" type="translate" values="0,-240;-2,500" dur="50s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;0.3;0" dur="50s" repeatCount="indefinite" />
+    </use>
+    
+    <use href="#simpleFlake" x="-150" y="-160">
+      <animateTransform attributeName="transform" type="translate" values="0,-160;-25,500" dur="35s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;0.4;0" dur="35s" repeatCount="indefinite" />
+    </use>
+    
+    <use href="#simpleFlake" x="180" y="-140">
+      <animateTransform attributeName="transform" type="translate" values="0,-140;28,500" dur="40s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;0.5;0" dur="40s" repeatCount="indefinite" />
+    </use>
+  </g>
+
+  <!-- Atmospheric gentle snow swirls -->
+  <g opacity="0.2">
+    <ellipse cx="-250" cy="50" rx="80" ry="20" fill="url(#sparkleSnow)">
+      <animateTransform attributeName="transform" type="translate" values="0,0;50,-15;0,0" dur="60s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.2;0.4;0.2" dur="25s" repeatCount="indefinite" />
+    </ellipse>
+    
+    <ellipse cx="230" cy="80" rx="70" ry="18" fill="url(#sparkleSnow)">
+      <animateTransform attributeName="transform" type="translate" values="0,0;-45,10;0,0" dur="75s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.2;0.5;0.2" dur="30s" repeatCount="indefinite" />
+    </ellipse>
+  </g>
+
+</svg>

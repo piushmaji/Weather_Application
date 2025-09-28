@@ -1,0 +1,337 @@
+<!-- 
+  Ultra Realistic 3D Rain Animation
+  - 3D cloud with volumetric lighting and shadows
+  - Multi-layered rain drops with depth perception
+  - Realistic water physics and motion blur
+  - Dynamic lighting effects
+  - Professional weather visualization
+-->
+<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 3D Cloud Gradients -->
+    <radialGradient id="cloudTop" cx="30%" cy="20%" r="80%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#f8fafc" stop-opacity="0.95"/>
+      <stop offset="70%" stop-color="#e2e8f0" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.8"/>
+    </radialGradient>
+
+    <radialGradient id="cloudBottom" cx="70%" cy="80%" r="60%">
+      <stop offset="0%" stop-color="#cbd5e1" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#94a3b8" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#64748b" stop-opacity="1"/>
+    </radialGradient>
+
+    <linearGradient id="cloudSide" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e2e8f0" stop-opacity="0.95"/>
+      <stop offset="30%" stop-color="#cbd5e1" stop-opacity="0.9"/>
+      <stop offset="70%" stop-color="#94a3b8" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#64748b" stop-opacity="1"/>
+    </linearGradient>
+
+    <!-- Ultra Realistic Rain Drop Gradients with Refraction -->
+    <linearGradient id="rainFront" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#e0f2fe" stop-opacity="0.98"/>
+      <stop offset="15%" stop-color="#7dd3fc" stop-opacity="0.95"/>
+      <stop offset="40%" stop-color="#38bdf8" stop-opacity="0.92"/>
+      <stop offset="70%" stop-color="#0ea5e9" stop-opacity="0.95"/>
+      <stop offset="85%" stop-color="#0284c7" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="1"/>
+    </linearGradient>
+
+    <linearGradient id="rainMid" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#dbeafe" stop-opacity="0.85"/>
+      <stop offset="20%" stop-color="#93c5fd" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#60a5fa" stop-opacity="0.85"/>
+      <stop offset="80%" stop-color="#3b82f6" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <linearGradient id="rainBack" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#e0e7ff" stop-opacity="0.65"/>
+      <stop offset="25%" stop-color="#a5b4fc" stop-opacity="0.6"/>
+      <stop offset="55%" stop-color="#818cf8" stop-opacity="0.7"/>
+      <stop offset="80%" stop-color="#6366f1" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#4f46e5" stop-opacity="0.85"/>
+    </linearGradient>
+
+    <!-- Motion Blur Filter -->
+    <filter id="motionBlur" x="-50%" y="-50%" width="200%" height="300%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0 2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Heavy Blur for Distance -->
+    <filter id="distanceBlur" x="-50%" y="-50%" width="200%" height="300%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.8 1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Cloud Shadow -->
+    <filter id="cloudShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="3" dy="6" stdDeviation="4" flood-color="#1e293b" flood-opacity="0.4"/>
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#334155" flood-opacity="0.2"/>
+    </filter>
+
+    <!-- Rain Drop Shadow -->
+    <filter id="dropShadow" x="-100%" y="-100%" width="300%" height="400%">
+      <feDropShadow dx="0.5" dy="1" stdDeviation="0.5" flood-color="#1e293b" flood-opacity="0.3"/>
+    </filter>
+
+    <!-- Glow Effect -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Enhanced 3D Rain Drop with Refraction -->
+    <g id="rainDrop3D">
+      <ellipse cx="0" cy="0" rx="1.2" ry="6" fill="url(#rainFront)" opacity="0.95"/>
+      <ellipse cx="0.4" cy="-1" rx="0.3" ry="1.5" fill="#ffffff" opacity="0.7"/>
+      <ellipse cx="0.2" cy="0" rx="0.6" ry="6" fill="#ffffff" opacity="0.2"/>
+      <ellipse cx="-0.3" cy="2" rx="0.4" ry="3" fill="url(#rainFront)" opacity="0.4"/>
+      <circle cx="0.1" cy="-2" r="0.3" fill="#ffffff" opacity="0.8"/>
+    </g>
+
+    <g id="rainDropMedium">
+      <ellipse cx="0" cy="0" rx="0.9" ry="4.5" fill="url(#rainMid)" opacity="0.85"/>
+      <ellipse cx="0.3" cy="-0.5" rx="0.2" ry="1" fill="#ffffff" opacity="0.6"/>
+      <ellipse cx="0.15" cy="0" rx="0.4" ry="4.5" fill="#ffffff" opacity="0.15"/>
+      <circle cx="0.1" cy="-1.5" r="0.2" fill="#ffffff" opacity="0.7"/>
+    </g>
+
+    <g id="rainDropSmall">
+      <ellipse cx="0" cy="0" rx="0.6" ry="3" fill="url(#rainBack)" opacity="0.75"/>
+      <ellipse cx="0.2" cy="-0.3" rx="0.15" ry="0.7" fill="#ffffff" opacity="0.5"/>
+      <ellipse cx="0.1" cy="0" rx="0.25" ry="3" fill="#ffffff" opacity="0.1"/>
+    </g>
+
+    <!-- Animation Styles -->
+    <style>
+      .cloud-3d {
+        animation: cloudFloat 8s ease-in-out infinite;
+        filter: url(#cloudShadow);
+      }
+      
+      .rain-front {
+        animation: rainFall1 1.5s linear infinite;
+        filter: url(#dropShadow);
+      }
+      
+      .rain-mid {
+        animation: rainFall2 2s linear infinite;
+        filter: url(#motionBlur);
+      }
+      
+      .rain-back {
+        animation: rainFall3 2.5s linear infinite;
+        filter: url(#distanceBlur);
+      }
+
+      .rain-front:nth-child(2n) { animation-delay: 0.1s; }
+      .rain-front:nth-child(3n) { animation-delay: 0.2s; }
+      .rain-front:nth-child(4n) { animation-delay: 0.3s; }
+      .rain-front:nth-child(5n) { animation-delay: 0.4s; }
+
+      .rain-mid:nth-child(2n) { animation-delay: 0.15s; }
+      .rain-mid:nth-child(3n) { animation-delay: 0.3s; }
+      .rain-mid:nth-child(4n) { animation-delay: 0.45s; }
+      .rain-mid:nth-child(5n) { animation-delay: 0.6s; }
+
+      .rain-back:nth-child(2n) { animation-delay: 0.2s; }
+      .rain-back:nth-child(3n) { animation-delay: 0.4s; }
+      .rain-back:nth-child(4n) { animation-delay: 0.6s; }
+      .rain-back:nth-child(5n) { animation-delay: 0.8s; }
+
+      @keyframes cloudFloat {
+        0%, 100% { 
+          transform: translateX(0) scale(1); 
+        }
+        25% { 
+          transform: translateX(-1px) scale(1.01); 
+        }
+        50% { 
+          transform: translateX(1px) scale(0.99); 
+        }
+        75% { 
+          transform: translateX(-0.5px) scale(1.005); 
+        }
+      }
+
+      @keyframes rainFall1 {
+        0% { 
+          transform: translateY(-15px) translateX(0px) scaleY(0.5); 
+          opacity: 0; 
+        }
+        10% { 
+          opacity: 1; 
+          transform: translateY(-10px) translateX(0.5px) scaleY(0.8); 
+        }
+        90% { 
+          opacity: 0.9; 
+          transform: translateY(45px) translateX(2px) scaleY(1.2); 
+        }
+        100% { 
+          transform: translateY(55px) translateX(3px) scaleY(1.4); 
+          opacity: 0; 
+        }
+      }
+
+      @keyframes rainFall2 {
+        0% { 
+          transform: translateY(-12px) translateX(0px) scaleY(0.6); 
+          opacity: 0; 
+        }
+        8% { 
+          opacity: 0.8; 
+          transform: translateY(-8px) translateX(0.3px) scaleY(0.9); 
+        }
+        92% { 
+          opacity: 0.7; 
+          transform: translateY(48px) translateX(1.5px) scaleY(1.1); 
+        }
+        100% { 
+          transform: translateY(58px) translateX(2px) scaleY(1.3); 
+          opacity: 0; 
+        }
+      }
+
+      @keyframes rainFall3 {
+        0% { 
+          transform: translateY(-10px) translateX(0px) scaleY(0.7); 
+          opacity: 0; 
+        }
+        6% { 
+          opacity: 0.6; 
+          transform: translateY(-6px) translateX(0.2px) scaleY(0.95); 
+        }
+        94% { 
+          opacity: 0.5; 
+          transform: translateY(50px) translateX(1px) scaleY(1.05); 
+        }
+        100% { 
+          transform: translateY(60px) translateX(1.5px) scaleY(1.2); 
+          opacity: 0; 
+        }
+      }
+    </style>
+  </defs>
+
+  <!-- 3D Cloud with Multiple Layers -->
+  <g class="cloud-3d">
+    <!-- Cloud Base Shadow -->
+    <ellipse cx="60" cy="50" rx="35" ry="12" fill="#64748b" opacity="0.2"/>
+    
+    <!-- Cloud Bottom Layer -->
+    <path fill="url(#cloudBottom)" 
+          d="M20,40 C10,40 5,30 20,25 C25,15 65,15 75,25 C90,25 95,35 80,40 C65,45 35,45 20,40 Z" />
+    
+    <!-- Cloud Middle Layer -->
+    <path fill="url(#cloudSide)" 
+          d="M25,35 C15,35 12,28 25,24 C28,12 62,12 70,24 C82,24 85,32 75,35 C62,38 38,38 25,35 Z" />
+    
+    <!-- Cloud Top Layer (Highlight) -->
+    <path fill="url(#cloudTop)" 
+          d="M30,30 C22,30 20,25 30,22 C32,13 58,13 65,22 C75,22 77,27 70,30 C60,32 40,32 30,30 Z" />
+    
+    <!-- Cloud Highlights -->
+    <ellipse cx="45" cy="25" rx="8" ry="4" fill="#ffffff" opacity="0.6"/>
+    <ellipse cx="35" cy="28" rx="5" ry="2" fill="#ffffff" opacity="0.4"/>
+    <ellipse cx="55" cy="27" rx="6" ry="3" fill="#ffffff" opacity="0.5"/>
+  </g>
+
+  <!-- Background Rain Layer (Farthest) - More drops for density -->
+  <g opacity="0.7">
+    <use href="#rainDropSmall" class="rain-back" x="12" y="45"/>
+    <use href="#rainDropSmall" class="rain-back" x="22" y="43"/>
+    <use href="#rainDropSmall" class="rain-back" x="32" y="44"/>
+    <use href="#rainDropSmall" class="rain-back" x="42" y="42"/>
+    <use href="#rainDropSmall" class="rain-back" x="52" y="45"/>
+    <use href="#rainDropSmall" class="rain-back" x="62" y="43"/>
+    <use href="#rainDropSmall" class="rain-back" x="72" y="44"/>
+    <use href="#rainDropSmall" class="rain-back" x="82" y="42"/>
+    <use href="#rainDropSmall" class="rain-back" x="92" y="45"/>
+    <use href="#rainDropSmall" class="rain-back" x="102" y="43"/>
+    <use href="#rainDropSmall" class="rain-back" x="7" y="41"/>
+    <use href="#rainDropSmall" class="rain-back" x="17" y="46"/>
+    <use href="#rainDropSmall" class="rain-back" x="27" y="41"/>
+    <use href="#rainDropSmall" class="rain-back" x="37" y="47"/>
+    <use href="#rainDropSmall" class="rain-back" x="47" y="41"/>
+    <use href="#rainDropSmall" class="rain-back" x="57" y="46"/>
+    <use href="#rainDropSmall" class="rain-back" x="67" y="41"/>
+    <use href="#rainDropSmall" class="rain-back" x="77" y="47"/>
+    <use href="#rainDropSmall" class="rain-back" x="87" y="41"/>
+    <use href="#rainDropSmall" class="rain-back" x="97" y="46"/>
+    <use href="#rainDropSmall" class="rain-back" x="107" y="44"/>
+    <use href="#rainDropSmall" class="rain-back" x="117" y="42"/>
+  </g>
+
+  <!-- Middle Rain Layer - Enhanced density -->
+  <g opacity="0.85">
+    <use href="#rainDropMedium" class="rain-mid" x="15" y="46"/>
+    <use href="#rainDropMedium" class="rain-mid" x="25" y="44"/>
+    <use href="#rainDropMedium" class="rain-mid" x="35" y="47"/>
+    <use href="#rainDropMedium" class="rain-mid" x="45" y="45"/>
+    <use href="#rainDropMedium" class="rain-mid" x="55" y="48"/>
+    <use href="#rainDropMedium" class="rain-mid" x="65" y="46"/>
+    <use href="#rainDropMedium" class="rain-mid" x="75" y="47"/>
+    <use href="#rainDropMedium" class="rain-mid" x="85" y="45"/>
+    <use href="#rainDropMedium" class="rain-mid" x="95" y="48"/>
+    <use href="#rainDropMedium" class="rain-mid" x="105" y="46"/>
+    <use href="#rainDropMedium" class="rain-mid" x="10" y="48"/>
+    <use href="#rainDropMedium" class="rain-mid" x="20" y="46"/>
+    <use href="#rainDropMedium" class="rain-mid" x="30" y="49"/>
+    <use href="#rainDropMedium" class="rain-mid" x="40" y="47"/>
+    <use href="#rainDropMedium" class="rain-mid" x="50" y="46"/>
+    <use href="#rainDropMedium" class="rain-mid" x="60" y="48"/>
+    <use href="#rainDropMedium" class="rain-mid" x="70" y="46"/>
+    <use href="#rainDropMedium" class="rain-mid" x="80" y="49"/>
+    <use href="#rainDropMedium" class="rain-mid" x="90" y="47"/>
+    <use href="#rainDropMedium" class="rain-mid" x="100" y="48"/>
+    <use href="#rainDropMedium" class="rain-mid" x="110" y="46"/>
+  </g>
+
+  <!-- Foreground Rain Layer (Closest) - More realistic placement -->
+  <g opacity="1">
+    <use href="#rainDrop3D" class="rain-front" x="18" y="48"/>
+    <use href="#rainDrop3D" class="rain-front" x="28" y="46"/>
+    <use href="#rainDrop3D" class="rain-front" x="38" y="49"/>
+    <use href="#rainDrop3D" class="rain-front" x="48" y="47"/>
+    <use href="#rainDrop3D" class="rain-front" x="58" y="50"/>
+    <use href="#rainDrop3D" class="rain-front" x="68" y="48"/>
+    <use href="#rainDrop3D" class="rain-front" x="78" y="47"/>
+    <use href="#rainDrop3D" class="rain-front" x="88" y="49"/>
+    <use href="#rainDrop3D" class="rain-front" x="98" y="47"/>
+    <use href="#rainDrop3D" class="rain-front" x="23" y="50"/>
+    <use href="#rainDrop3D" class="rain-front" x="33" y="48"/>
+    <use href="#rainDrop3D" class="rain-front" x="43" y="49"/>
+    <use href="#rainDrop3D" class="rain-front" x="53" y="47"/>
+    <use href="#rainDrop3D" class="rain-front" x="63" y="50"/>
+    <use href="#rainDrop3D" class="rain-front" x="73" y="48"/>
+    <use href="#rainDrop3D" class="rain-front" x="83" y="49"/>
+    <use href="#rainDrop3D" class="rain-front" x="93" y="47"/>
+    <use href="#rainDrop3D" class="rain-front" x="103" y="50"/>
+  </g>
+
+  <!-- Atmospheric Rain Mist -->
+  <g opacity="0.3">
+    <ellipse cx="60" cy="65" rx="45" ry="8" fill="url(#rainMid)">
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="4s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="60" cy="75" rx="50" ry="6" fill="url(#rainBack)">
+      <animate attributeName="opacity" values="0.2;0.05;0.2" dur="6s" repeatCount="indefinite"/>
+    </ellipse>
+  </g>
+
+
+
+</svg>

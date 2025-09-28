@@ -1,0 +1,239 @@
+<!-- 
+  Animated Ultra Realistic 3D Sun Icon
+  - Enhanced 3D depth with multiple lighting layers
+  - Realistic solar surface texture and corona effects
+  - Dynamic ray system with smooth rotation animations
+  - Advanced gradient system for photorealistic appearance
+  - Pulsing solar flares and atmospheric effects
+-->
+<svg viewBox="-150 -150 300 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Advanced filter system for realistic glow and depth -->
+    <filter id="solarGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="8" result="innerGlow" />
+      <feGaussianBlur stdDeviation="18" result="outerGlow" />
+      <feGaussianBlur stdDeviation="35" result="corona" />
+      <feMerge>
+        <feMergeNode in="corona" />
+        <feMergeNode in="outerGlow" />
+        <feMergeNode in="innerGlow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Multi-layered radial gradient for realistic solar surface -->
+    <radialGradient id="solarCore" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9" />
+      <stop offset="15%" stop-color="#FFF9E6" stop-opacity="0.8" />
+      <stop offset="35%" stop-color="#FFE55C" stop-opacity="0.9" />
+      <stop offset="60%" stop-color="#FFD700" stop-opacity="1" />
+      <stop offset="85%" stop-color="#FF8C00" stop-opacity="1" />
+      <stop offset="100%" stop-color="#FF6B35" stop-opacity="0.95" />
+    </radialGradient>
+
+    <!-- Animated gradient for shifting solar surface -->
+    <radialGradient id="solarCoreAnimated" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9">
+        <animate attributeName="stop-opacity" values="0.9;1;0.9" dur="4s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="15%" stop-color="#FFF9E6" stop-opacity="0.8">
+        <animate attributeName="stop-opacity" values="0.8;0.9;0.8" dur="3s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="35%" stop-color="#FFE55C" stop-opacity="0.9">
+        <animate attributeName="stop-opacity" values="0.9;1;0.9" dur="5s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="60%" stop-color="#FFD700" stop-opacity="1" />
+      <stop offset="85%" stop-color="#FF8C00" stop-opacity="1" />
+      <stop offset="100%" stop-color="#FF6B35" stop-opacity="0.95" />
+    </radialGradient>
+
+    <!-- Secondary gradient for depth and shadow -->
+    <radialGradient id="solarDepth" cx="65%" cy="65%" r="80%">
+      <stop offset="0%" stop-color="transparent" />
+      <stop offset="60%" stop-color="transparent" />
+      <stop offset="85%" stop-color="#CC5500" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#8B0000" stop-opacity="0.6" />
+    </radialGradient>
+
+    <!-- Realistic highlight gradient with animation -->
+    <radialGradient id="solarHighlight" cx="25%" cy="25%" r="40%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.6">
+        <animate attributeName="stop-opacity" values="0.6;0.8;0.6" dur="3s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="30%" stop-color="#FFFACD" stop-opacity="0.4">
+        <animate attributeName="stop-opacity" values="0.4;0.6;0.4" dur="4s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="70%" stop-color="#FFE55C" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="transparent" />
+    </radialGradient>
+
+    <!-- Dynamic ray gradients with varying intensities -->
+    <linearGradient id="majorRay" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9">
+        <animate attributeName="stop-opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="20%" stop-color="#FFE55C" stop-opacity="0.8" />
+      <stop offset="60%" stop-color="#FFD700" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#FF8C00" stop-opacity="0.5" />
+    </linearGradient>
+
+    <linearGradient id="minorRay" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE55C" stop-opacity="0.7" />
+      <stop offset="50%" stop-color="#FFD700" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#FF8C00" stop-opacity="0.3" />
+    </linearGradient>
+
+    <!-- Corona effect gradient with pulsing animation -->
+    <radialGradient id="coronaGlow" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="transparent" />
+      <stop offset="70%" stop-color="#FFD700" stop-opacity="0.1">
+        <animate attributeName="stop-opacity" values="0.1;0.2;0.1" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="85%" stop-color="#FF8C00" stop-opacity="0.15">
+        <animate attributeName="stop-opacity" values="0.15;0.25;0.15" dur="5s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#FF6B35" stop-opacity="0.2">
+        <animate attributeName="stop-opacity" values="0.2;0.3;0.2" dur="7s" repeatCount="indefinite" />
+      </stop>
+    </radialGradient>
+
+    <!-- Surface texture noise -->
+    <filter id="solarTexture">
+      <feTurbulence type="turbulence" baseFrequency="0.9" numOctaves="4" result="noise">
+        <animate attributeName="baseFrequency" values="0.9;1.1;0.9" dur="8s" repeatCount="indefinite" />
+      </feTurbulence>
+      <feColorMatrix in="noise" type="saturate" values="0.3"/>
+      <feComponentTransfer>
+        <feFuncA type="discrete" tableValues="0.1 0.2 0.1 0.15 0.05"/>
+      </feComponentTransfer>
+      <feComposite operator="multiply" in2="SourceGraphic" result="texturedSun" />
+      <feBlend mode="overlay" in="texturedSun" in2="SourceGraphic" />
+    </filter>
+  </defs>
+
+  <!-- Main sun container with enhanced effects -->
+  <g>
+    <!-- Layer 1: Extended corona/atmosphere with pulsing transparency -->
+    <circle cx="0" cy="0" r="140" fill="url(#coronaGlow)" opacity="0.25">
+      <animate attributeName="opacity" values="0.25;0.4;0.25" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="r" values="140;145;140" dur="12s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- Layer 2: Secondary corona with breathing effect -->
+    <circle cx="0" cy="0" r="115" fill="#FFD700" opacity="0.06" filter="url(#solarGlow)">
+      <animate attributeName="opacity" values="0.06;0.12;0.06" dur="6s" repeatCount="indefinite" />
+      <animate attributeName="r" values="115;120;115" dur="10s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Layer 3: Major solar rays (8 primary rays) with rotation -->
+    <g fill="url(#majorRay)" opacity="0.9">
+      <animateTransform attributeName="transform" type="rotate" values="0;360" dur="60s" repeatCount="indefinite" />
+      <!-- Top ray -->
+      <path d="M0 -95 L -8 -140 L 8 -140 Z" />
+      <!-- Top-right ray -->
+      <path d="M0 -95 L -6 -135 L 6 -135 Z" transform="rotate(45)" />
+      <!-- Right ray -->
+      <path d="M0 -95 L -8 -140 L 8 -140 Z" transform="rotate(90)" />
+      <!-- Bottom-right ray -->
+      <path d="M0 -95 L -6 -135 L 6 -135 Z" transform="rotate(135)" />
+      <!-- Bottom ray -->
+      <path d="M0 -95 L -8 -140 L 8 -140 Z" transform="rotate(180)" />
+      <!-- Bottom-left ray -->
+      <path d="M0 -95 L -6 -135 L 6 -135 Z" transform="rotate(225)" />
+      <!-- Left ray -->
+      <path d="M0 -95 L -8 -140 L 8 -140 Z" transform="rotate(270)" />
+      <!-- Top-left ray -->
+      <path d="M0 -95 L -6 -135 L 6 -135 Z" transform="rotate(315)" />
+    </g>
+
+    <!-- Layer 4: Minor solar rays (8 secondary rays) with counter-rotation -->
+    <g fill="url(#minorRay)" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" values="360;0" dur="80s" repeatCount="indefinite" />
+      <path d="M0 -95 L -4 -125 L 4 -125 Z" transform="rotate(22.5)" />
+      <path d="M0 -95 L -4 -125 L 4 -125 Z" transform="rotate(67.5)" />
+      <path d="M0 -95 L -4 -125 L 4 -125 Z" transform="rotate(112.5)" />
+      <path d="M0 -95 L -4 -125 L 4 -125 Z" transform="rotate(157.5)" />
+      <path d="M0 -95 L -4 -125 L 4 -125 Z" transform="rotate(202.5)" />
+      <path d="M0 -95 L -4 -125 L 4 -125 Z" transform="rotate(247.5)" />
+      <path d="M0 -95 L -4 -125 L 4 -125 Z" transform="rotate(292.5)" />
+      <path d="M0 -95 L -4 -125 L 4 -125 Z" transform="rotate(337.5)" />
+    </g>
+
+    <!-- Layer 5: Main solar body with multiple depth layers and subtle pulsing -->
+    <g>
+      <!-- Base solar sphere with gentle breathing -->
+      <circle cx="0" cy="0" r="90" fill="url(#solarCoreAnimated)">
+        <animate attributeName="r" values="90;92;90" dur="15s" repeatCount="indefinite" />
+      </circle>
+      
+      <!-- Depth shadow layer -->
+      <circle cx="0" cy="0" r="90" fill="url(#solarDepth)">
+        <animate attributeName="r" values="90;92;90" dur="15s" repeatCount="indefinite" />
+      </circle>
+      
+      <!-- Surface texture with animated turbulence -->
+      <circle cx="0" cy="0" r="90" fill="#FFD700" opacity="0.15" filter="url(#solarTexture)">
+        <animate attributeName="r" values="90;92;90" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.15;0.25;0.15" dur="7s" repeatCount="indefinite" />
+      </circle>
+      
+      <!-- Primary highlight with shimmer effect -->
+      <circle cx="0" cy="0" r="90" fill="url(#solarHighlight)">
+        <animate attributeName="r" values="90;92;90" dur="15s" repeatCount="indefinite" />
+      </circle>
+      
+      <!-- Secondary smaller highlight with gentle movement -->
+      <ellipse cx="-25" cy="-25" rx="35" ry="25" fill="#FFFFFF" opacity="0.25">
+        <animate attributeName="opacity" values="0.25;0.4;0.25" dur="5s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="translate" values="0,0;3,-2;0,0" dur="12s" repeatCount="indefinite" />
+      </ellipse>
+      
+      <!-- Tertiary micro-highlight with twinkling -->
+      <circle cx="-15" cy="-15" r="12" fill="#FFFFFF" opacity="0.4">
+        <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite" />
+        <animate attributeName="r" values="12;14;12" dur="4s" repeatCount="indefinite" />
+      </circle>
+    </g>
+
+    <!-- Layer 6: Surface details and animated solar flares -->
+    <g opacity="0.6">
+      <!-- Solar prominence effects with pulsing and movement -->
+      <circle cx="45" cy="20" r="8" fill="#FF4500" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3s" repeatCount="indefinite" />
+        <animate attributeName="r" values="8;12;8" dur="4s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="rotate" values="0;360" dur="25s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="-35" cy="35" r="6" fill="#FF6B35" opacity="0.4">
+        <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2.5s" repeatCount="indefinite" />
+        <animate attributeName="r" values="6;9;6" dur="3.5s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="rotate" values="360;0" dur="30s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="20" cy="-40" r="5" fill="#FF8C00" opacity="0.6">
+        <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="rotate" values="0;360" dur="20s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="-50" cy="-10" r="7" fill="#FF4500" opacity="0.3">
+        <animate attributeName="opacity" values="0.3;0.6;0.3" dur="4s" repeatCount="indefinite" />
+        <animate attributeName="r" values="7;10;7" dur="5s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="rotate" values="360;0" dur="35s" repeatCount="indefinite" />
+      </circle>
+    </g>
+
+    <!-- Layer 7: Final glow enhancement with pulsing rings -->
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.2">
+      <animate attributeName="opacity" values="0.2;0.4;0.2" dur="6s" repeatCount="indefinite" />
+      <animate attributeName="r" values="100;103;100" dur="8s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="0" cy="0" r="105" fill="none" stroke="#FF8C00" stroke-width="1" opacity="0.15">
+      <animate attributeName="opacity" values="0.15;0.3;0.15" dur="7s" repeatCount="indefinite" />
+      <animate attributeName="r" values="105;108;105" dur="9s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Additional atmospheric layers for enhanced realism -->
+    <circle cx="0" cy="0" r="125" fill="#FFD700" opacity="0.03">
+      <animate attributeName="opacity" values="0.03;0.08;0.03" dur="10s" repeatCount="indefinite" />
+      <animate attributeName="r" values="125;130;125" dur="14s" repeatCount="indefinite" />
+    </circle>
+  </g>
+</svg>

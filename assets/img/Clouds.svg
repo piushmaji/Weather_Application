@@ -1,0 +1,241 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Cloud Gradients -->
+    <radialGradient id="mainCloudGradient" cx="40%" cy="25%" r="80%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F1F5F9;stop-opacity:1" />
+      <stop offset="80%" style="stop-color:#E2E8F0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#CBD5E1;stop-opacity:1" />
+    </radialGradient>
+    
+    <radialGradient id="secondaryCloudGradient" cx="30%" cy="20%" r="70%">
+      <stop offset="0%" style="stop-color:#F8FAFC;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#E2E8F0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#94A3B8;stop-opacity:1" />
+    </radialGradient>
+    
+    <radialGradient id="cloudShadow" cx="50%" cy="80%" r="60%">
+      <stop offset="0%" style="stop-color:#64748B;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#475569;stop-opacity:0.6" />
+    </radialGradient>
+    
+    <!-- 3D Effects -->
+    <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="8" dy="15" stdDeviation="12" flood-color="#00000040"/>
+    </filter>
+    
+    <filter id="innerShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feOffset dx="3" dy="6"/>
+      <feGaussianBlur stdDeviation="5" result="offset-blur"/>
+      <feFlood flood-color="#94A3B8" flood-opacity="0.3"/>
+      <feComposite in2="offset-blur" operator="in"/>
+      <feComposite in2="SourceGraphic" operator="over"/>
+    </filter>
+
+    <!-- Enhanced cloud animations -->
+    <style>
+      .main-cloud {
+        animation: mainCloudFloat 8s ease-in-out infinite;
+        filter: url(#dropShadow);
+      }
+
+      .secondary-cloud-1 {
+        animation: secondaryCloudFloat1 6s ease-in-out infinite;
+        filter: url(#dropShadow);
+      }
+
+      .secondary-cloud-2 {
+        animation: secondaryCloudFloat2 7s ease-in-out infinite;
+        filter: url(#dropShadow);
+      }
+
+      .cloud-highlight {
+        animation: highlightShimmer 3s ease-in-out infinite;
+      }
+
+      .cloud-body {
+        animation: cloudMorph 5s ease-in-out infinite;
+      }
+
+      .cloud-shadow {
+        animation: shadowMove 6s ease-in-out infinite;
+      }
+
+      .cloud-highlight:nth-child(2) { animation-delay: -1s; }
+      .cloud-highlight:nth-child(3) { animation-delay: -2s; }
+      .cloud-body:nth-child(2) { animation-delay: -1.5s; }
+      .cloud-body:nth-child(3) { animation-delay: -2.5s; }
+      .cloud-body:nth-child(4) { animation-delay: -3.5s; }
+      .cloud-body:nth-child(5) { animation-delay: -4.5s; }
+
+      .secondary-cloud-1 { animation-delay: -2s; }
+      .secondary-cloud-2 { animation-delay: -4s; }
+
+      @keyframes mainCloudFloat {
+        0%, 100% { 
+          transform: translate(200px, 200px) translateY(0) translateX(0) scale(1) rotate(0deg); 
+        }
+        20% { 
+          transform: translate(200px, 200px) translateY(-8px) translateX(-3px) scale(1.02) rotate(-0.5deg); 
+        }
+        40% { 
+          transform: translate(200px, 200px) translateY(-12px) translateX(2px) scale(1.04) rotate(0.3deg); 
+        }
+        60% { 
+          transform: translate(200px, 200px) translateY(-10px) translateX(4px) scale(1.03) rotate(-0.2deg); 
+        }
+        80% { 
+          transform: translate(200px, 200px) translateY(-6px) translateX(-2px) scale(1.02) rotate(0.4deg); 
+        }
+      }
+
+      @keyframes secondaryCloudFloat1 {
+        0%, 100% { 
+          transform: translate(120px, 120px) translateX(0) translateY(0) scale(1) rotate(0deg); 
+        }
+        25% { 
+          transform: translate(120px, 120px) translateX(-4px) translateY(-6px) scale(1.03) rotate(-0.8deg); 
+        }
+        50% { 
+          transform: translate(120px, 120px) translateX(3px) translateY(-8px) scale(1.05) rotate(0.6deg); 
+        }
+        75% { 
+          transform: translate(120px, 120px) translateX(-2px) translateY(-4px) scale(1.02) rotate(-0.4deg); 
+        }
+      }
+
+      @keyframes secondaryCloudFloat2 {
+        0%, 100% { 
+          transform: translate(320px, 140px) translateX(0) translateY(0) scale(1) rotate(0deg); 
+        }
+        30% { 
+          transform: translate(320px, 140px) translateX(5px) translateY(-5px) scale(1.04) rotate(0.7deg); 
+        }
+        60% { 
+          transform: translate(320px, 140px) translateX(-3px) translateY(-9px) scale(1.06) rotate(-0.5deg); 
+        }
+        90% { 
+          transform: translate(320px, 140px) translateX(2px) translateY(-3px) scale(1.02) rotate(0.3deg); 
+        }
+      }
+
+      @keyframes highlightShimmer {
+        0%, 100% { 
+          opacity: 0.7; 
+          transform: scale(1);
+        }
+        25% { 
+          opacity: 0.9; 
+          transform: scale(1.05);
+        }
+        50% { 
+          opacity: 1; 
+          transform: scale(1.1);
+        }
+        75% { 
+          opacity: 0.8; 
+          transform: scale(1.03);
+        }
+      }
+
+      @keyframes cloudMorph {
+        0%, 100% { 
+          transform: scale(1) skewX(0deg);
+        }
+        25% { 
+          transform: scale(1.02) skewX(1deg);
+        }
+        50% { 
+          transform: scale(1.04) skewX(-0.5deg);
+        }
+        75% { 
+          transform: scale(1.01) skewX(0.8deg);
+        }
+      }
+
+      @keyframes shadowMove {
+        0%, 100% { 
+          transform: translate(6px, 12px) scale(1);
+          opacity: 0.7;
+        }
+        30% { 
+          transform: translate(8px, 14px) scale(1.02);
+          opacity: 0.5;
+        }
+        60% { 
+          transform: translate(4px, 16px) scale(1.04);
+          opacity: 0.8;
+        }
+        90% { 
+          transform: translate(7px, 13px) scale(1.01);
+          opacity: 0.6;
+        }
+      }
+    </style>
+  </defs>
+
+  <!-- Main Large Cloud -->
+  <g class="main-cloud">
+    <!-- Cloud shadow -->
+    <g class="cloud-shadow" transform="translate(6, 12)" opacity="0.7">
+      <ellipse class="cloud-body" cx="-80" cy="20" rx="70" ry="45" fill="url(#cloudShadow)"/>
+      <ellipse class="cloud-body" cx="0" cy="0" rx="90" ry="60" fill="url(#cloudShadow)"/>
+      <ellipse class="cloud-body" cx="75" cy="25" rx="65" ry="40" fill="url(#cloudShadow)"/>
+      <ellipse class="cloud-body" cx="40" cy="-30" rx="50" ry="35" fill="url(#cloudShadow)"/>
+      <ellipse class="cloud-body" cx="-50" cy="-25" rx="60" ry="40" fill="url(#cloudShadow)"/>
+    </g>
+    
+    <!-- Main cloud body -->
+    <ellipse class="cloud-body" cx="-80" cy="20" rx="70" ry="45" fill="url(#mainCloudGradient)"/>
+    <ellipse class="cloud-body" cx="0" cy="0" rx="90" ry="60" fill="url(#mainCloudGradient)"/>
+    <ellipse class="cloud-body" cx="75" cy="25" rx="65" ry="40" fill="url(#mainCloudGradient)"/>
+    <ellipse class="cloud-body" cx="40" cy="-30" rx="50" ry="35" fill="url(#mainCloudGradient)"/>
+    <ellipse class="cloud-body" cx="-50" cy="-25" rx="60" ry="40" fill="url(#mainCloudGradient)"/>
+    
+    <!-- Cloud highlights with shimmer -->
+    <ellipse class="cloud-highlight" cx="-60" cy="-10" rx="35" ry="25" fill="#FFFFFF" opacity="0.7"/>
+    <ellipse class="cloud-highlight" cx="20" cy="-40" rx="30" ry="20" fill="#FFFFFF" opacity="0.6"/>
+    <ellipse class="cloud-highlight" cx="50" cy="10" rx="25" ry="18" fill="#F8FAFC" opacity="0.5"/>
+    
+    <!-- Inner shadow for depth -->
+    <ellipse cx="0" cy="0" rx="90" ry="60" fill="none" filter="url(#innerShadow)"/>
+  </g>
+
+  <!-- Secondary Cloud (Top Left) -->
+  <g class="secondary-cloud-1">
+    <!-- Shadow -->
+    <g class="cloud-shadow" transform="translate(4, 8)" opacity="0.6">
+      <ellipse class="cloud-body" cx="-30" cy="10" rx="40" ry="25" fill="url(#cloudShadow)"/>
+      <ellipse class="cloud-body" cx="0" cy="0" rx="50" ry="30" fill="url(#cloudShadow)"/>
+      <ellipse class="cloud-body" cx="35" cy="12" rx="35" ry="22" fill="url(#cloudShadow)"/>
+    </g>
+    
+    <!-- Cloud body -->
+    <ellipse class="cloud-body" cx="-30" cy="10" rx="40" ry="25" fill="url(#secondaryCloudGradient)"/>
+    <ellipse class="cloud-body" cx="0" cy="0" rx="50" ry="30" fill="url(#secondaryCloudGradient)"/>
+    <ellipse class="cloud-body" cx="35" cy="12" rx="35" ry="22" fill="url(#secondaryCloudGradient)"/>
+    
+    <!-- Highlights with shimmer -->
+    <ellipse class="cloud-highlight" cx="-15" cy="-8" rx="20" ry="15" fill="#FFFFFF" opacity="0.6"/>
+    <ellipse class="cloud-highlight" cx="20" cy="2" rx="15" ry="12" fill="#FFFFFF" opacity="0.5"/>
+  </g>
+
+  <!-- Third Cloud (Top Right) -->
+  <g class="secondary-cloud-2">
+    <!-- Shadow -->
+    <g class="cloud-shadow" transform="translate(3, 6)" opacity="0.5">
+      <ellipse class="cloud-body" cx="-25" cy="8" rx="35" ry="20" fill="url(#cloudShadow)"/>
+      <ellipse class="cloud-body" cx="0" cy="0" rx="40" ry="25" fill="url(#cloudShadow)"/>
+      <ellipse class="cloud-body" cx="28" cy="10" rx="30" ry="18" fill="url(#cloudShadow)"/>
+    </g>
+    
+    <!-- Cloud body -->
+    <ellipse class="cloud-body" cx="-25" cy="8" rx="35" ry="20" fill="url(#secondaryCloudGradient)"/>
+    <ellipse class="cloud-body" cx="0" cy="0" rx="40" ry="25" fill="url(#secondaryCloudGradient)"/>
+    <ellipse class="cloud-body" cx="28" cy="10" rx="30" ry="18" fill="url(#secondaryCloudGradient)"/>
+    
+    <!-- Highlights with shimmer -->
+    <ellipse class="cloud-highlight" cx="-10" cy="-6" rx="18" ry="12" fill="#FFFFFF" opacity="0.6"/>
+    <ellipse class="cloud-highlight" cx="15" cy="2" rx="12" ry="10" fill="#FFFFFF" opacity="0.5"/>
+  </g>
+</svg>

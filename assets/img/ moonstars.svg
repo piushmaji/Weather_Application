@@ -1,0 +1,147 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Moon Gradients -->
+    <radialGradient id="moonGradient" cx="35%" cy="25%" r="80%">
+      <stop offset="0%" style="stop-color:#FFF8DC;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#F0E68C;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#DAA520;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8860B;stop-opacity:1" />
+    </radialGradient>
+    
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="90%">
+      <stop offset="0%" style="stop-color:#FFF8DC;stop-opacity:0.4" />
+      <stop offset="70%" style="stop-color:#F0E68C;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#DAA520;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Cloud Gradients -->
+    <radialGradient id="cloudGradient" cx="40%" cy="25%" r="80%">
+      <stop offset="0%" style="stop-color:#F8FAFC;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#E2E8F0;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#CBD5E1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#94A3B8;stop-opacity:1" />
+    </radialGradient>
+    
+    <radialGradient id="cloudShadow" cx="50%" cy="70%" r="70%">
+      <stop offset="0%" style="stop-color:#64748B;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#475569;stop-opacity:0.6" />
+    </radialGradient>
+    
+    <!-- Star Gradient -->
+    <radialGradient id="starGradient" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#F1F5F9;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#CBD5E1;stop-opacity:0.7" />
+    </radialGradient>
+    
+    <!-- 3D Effects -->
+    <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="6" dy="12" stdDeviation="8" flood-color="#00000040"/>
+    </filter>
+    
+    <filter id="moonGlowEffect" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="starGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="innerShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feOffset dx="2" dy="4"/>
+      <feGaussianBlur stdDeviation="3" result="offset-blur"/>
+      <feFlood flood-color="#475569" flood-opacity="0.4"/>
+      <feComposite in2="offset-blur" operator="in"/>
+      <feComposite in2="SourceGraphic" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background Stars -->
+  <g opacity="0.8">
+    <!-- Small stars -->
+    <circle cx="80" cy="60" r="2" fill="url(#starGradient)" filter="url(#starGlow)"/>
+    <circle cx="320" cy="80" r="1.5" fill="url(#starGradient)" filter="url(#starGlow)"/>
+    <circle cx="60" cy="120" r="1" fill="url(#starGradient)" filter="url(#starGlow)"/>
+    <circle cx="350" cy="140" r="2" fill="url(#starGradient)" filter="url(#starGlow)"/>
+    <circle cx="40" cy="180" r="1.5" fill="url(#starGradient)" filter="url(#starGlow)"/>
+  </g>
+
+  <!-- Moon Glow Background -->
+  <g transform="translate(200, 150)">
+    <ellipse cx="0" cy="0" rx="120" ry="120" fill="url(#moonGlow)" opacity="0.6"/>
+  </g>
+
+  <!-- Crescent Moon (Behind Cloud) -->
+  <g transform="translate(200, 150)">
+    <!-- Moon glow shadow for depth -->
+    <circle cx="3" cy="6" r="65" fill="url(#cloudShadow)" opacity="0.4"/>
+    
+    <!-- Full moon circle -->
+    <circle cx="0" cy="0" r="60" fill="url(#moonGradient)" filter="url(#dropShadow)"/>
+    
+    <!-- Shadow overlay to create crescent effect -->
+    <circle cx="30" cy="-10" r="58" fill="#1A1A2E" opacity="0.85"/>
+    
+    <!-- Moon surface details (craters) -->
+    <ellipse cx="-30" cy="-25" rx="8" ry="6" fill="#DAA520" opacity="0.3"/>
+    <ellipse cx="-15" cy="-8" rx="5" ry="4" fill="#B8860B" opacity="0.4"/>
+    <ellipse cx="-20" cy="20" rx="6" ry="5" fill="#DAA520" opacity="0.25"/>
+    <ellipse cx="-35" cy="8" rx="4" ry="3" fill="#B8860B" opacity="0.3"/>
+    
+    <!-- Moon highlight on visible crescent -->
+    <ellipse cx="-40" cy="-35" rx="22" ry="18" fill="#FFFFFF" opacity="0.5"/>
+    <ellipse cx="-30" cy="-25" rx="12" ry="10" fill="#FFF8DC" opacity="0.7"/>
+  </g>
+
+  <!-- Main Star on Moon -->
+  <g transform="translate(155, 170)">
+    <!-- Star shape -->
+    <path d="M0,-8 L2,-2 L8,0 L2,2 L0,8 L-2,2 L-8,0 L-2,-2 Z" 
+          fill="url(#starGradient)" 
+          filter="url(#starGlow)"/>
+    <!-- Star center -->
+    <circle cx="0" cy="0" r="2" fill="#FFFFFF" opacity="0.9"/>
+  </g>
+
+  <!-- Cloud (In Front of Moon) -->
+  <g transform="translate(200, 250)">
+    <!-- Cloud shadow -->
+    <g transform="translate(4, 8)" opacity="0.6">
+      <ellipse cx="-60" cy="15" rx="55" ry="35" fill="url(#cloudShadow)"/>
+      <ellipse cx="0" cy="0" rx="75" ry="45" fill="url(#cloudShadow)"/>
+      <ellipse cx="55" cy="20" rx="50" ry="32" fill="url(#cloudShadow)"/>
+      <ellipse cx="25" cy="-20" rx="40" ry="25" fill="url(#cloudShadow)"/>
+      <ellipse cx="-35" cy="-15" rx="45" ry="28" fill="url(#cloudShadow)"/>
+    </g>
+    
+    <!-- Main cloud body -->
+    <ellipse cx="-60" cy="15" rx="55" ry="35" fill="url(#cloudGradient)" filter="url(#dropShadow)"/>
+    <ellipse cx="0" cy="0" rx="75" ry="45" fill="url(#cloudGradient)" filter="url(#dropShadow)"/>
+    <ellipse cx="55" cy="20" rx="50" ry="32" fill="url(#cloudGradient)" filter="url(#dropShadow)"/>
+    <ellipse cx="25" cy="-20" rx="40" ry="25" fill="url(#cloudGradient)" filter="url(#dropShadow)"/>
+    <ellipse cx="-35" cy="-15" rx="45" ry="28" fill="url(#cloudGradient)" filter="url(#dropShadow)"/>
+    
+    <!-- Cloud highlights -->
+    <ellipse cx="-40" cy="-8" rx="25" ry="18" fill="#FFFFFF" opacity="0.6"/>
+    <ellipse cx="10" cy="-25" rx="22" ry="15" fill="#FFFFFF" opacity="0.5"/>
+    <ellipse cx="40" cy="8" rx="18" ry="12" fill="#F8FAFC" opacity="0.4"/>
+    
+    <!-- Inner shadow for depth -->
+    <ellipse cx="0" cy="0" rx="75" ry="45" fill="none" filter="url(#innerShadow)"/>
+  </g>
+
+  <!-- Small Moon Crescent (Peeking from behind cloud) -->
+  <!-- <g transform="translate(310, 280)">
+    <circle cx="0" cy="0" r="22" fill="url(#moonGradient)" filter="url(#dropShadow)"/>
+    <circle cx="10" cy="-2" r="21" fill="#1A1A2E" opacity="0.85"/>
+    <ellipse cx="-12" cy="-10" rx="8" ry="6" fill="#FFFFFF" opacity="0.5"/>
+  </g>  -->
+</svg>

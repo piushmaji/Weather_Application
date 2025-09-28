@@ -1,0 +1,339 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    transition: background 0.5s ease-in-out;
+    box-sizing: border-box;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#main {
+    height: 630px;
+    width: 70%;
+    background-color: rgba(210, 197, 181, 0.343);
+    border-radius: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.429);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.1);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: auto;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 1.5px 4px 0 rgba(0, 0, 0, 0.18);
+}
+
+input:focus {
+    outline: none;
+}
+
+.searchbar {
+    display: flex;
+    align-items: center;
+    margin-top: 1%;
+}
+
+.searchbar i {
+    color: white;
+    margin-left: 2%;
+    font-size: 1.5rem;
+}
+
+/* Search button styling */
+.searchbar button {
+    margin-left: 1rem;
+    padding: 0.6rem 1.2rem;
+    margin-top: 1%;
+    border: none;
+    border-radius: 1rem;
+    background: rgb(123, 112, 223);
+    color: #fff;
+    font-size: 1.1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(30, 58, 138, 0.15);
+}
+
+.searchbar button:hover {
+    background: rgb(100, 86, 190);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
+}
+
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.596);
+    font-size: 1.2rem;
+    opacity: 1;
+}
+
+#city-input {
+    width: 35%;
+    height: 2.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.429);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    margin-top: 1%;
+    margin-left: 2%;
+}
+
+.weather {
+    margin-top: 1%;
+    margin-left: 2%;
+    display: flex;
+    /* background-color: violet; */
+}
+
+.weather-info {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    /* background-color: turquoise; */
+}
+
+.location-time {
+    height:50%;
+    width: 60%;
+    padding: 1rem;
+    /* background-color: rosybrown; */
+    margin: 2%;
+    /* color: white; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.location-time h2 {
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.location-time p {
+    font-size: 1rem;
+    /* color: rgba(255, 255, 255, 0.496); */
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.temp {
+    /* background-color: #0f3460; */
+    height:50%;
+    width: 60%;
+    padding: 1rem;
+    /* background-color: rosybrown; */
+    margin: 2%;
+    /* color: white; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.temp h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    /* color: white; */
+}
+
+.temp p {
+    font-size: 1.2rem;
+    /* color: rgba(255, 255, 255, 0.496); */
+    margin-top: -3rem;
+}
+
+.icon {
+    height: 250px;
+    width: 50%;
+    /* background-color: royalblue; */
+    margin-top: 5%;
+    position: relative;
+}
+
+.icon img {
+    height: 150%;
+    width: 150%;
+    position: absolute;
+    top: 65%;
+    left: 18%;
+    transform: translate(-40%, -60%);
+
+}
+
+
+.other-info {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+    /* color: white; */
+    /* background-color: #0f2027; */
+}
+
+.humidity,
+.wind-speed,
+.feelsLike,
+.air-quality {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.305);
+    border: 2px solid #fff6f698;
+    border-radius: 1rem;
+    font-size: 1rem;
+    height: 6rem;
+    width: 18%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: all 0.3s ease-in-out;
+}
+
+.humidity:hover,
+.wind-speed:hover,
+.feelsLike:hover,
+.air-quality:hover {
+    cursor: pointer;
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px var(--hover-glow, rgba(0, 0, 0, 0.25));
+    background: var(--hover-bg, rgba(0, 0, 0, 0.3));
+}
+
+.other-info i {
+    font-size: 1.5rem;
+    /* color: white; */
+    opacity: 0.8;
+    margin: 0;
+    padding: 0;
+}
+
+.other-info h3 {
+    font-size: 0.8rem;
+    font-weight: normal;
+    /* color: #D1D5DB; */
+    margin: 0;
+    padding: 0;
+}
+
+.other-info p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+
+    /* Body aur Main Card ki spacing theek ki */
+    body {
+        padding: 0.5rem;
+        align-items: flex-start;
+        /* Card ko upar se shuru karega */
+    }
+
+    .weather-card {
+        padding: 1.5rem;
+        width: 100%;
+    }
+
+    /* Main Content ko ek column mein kiya */
+    .main-content {
+        grid-template-columns: 1fr;
+        /* Dono hisse ab upar-neeche aayenge */
+        text-align: center;
+        gap: 1rem;
+    }
+
+    /* Icon ko upar kiya aur size theek kiya */
+    .weather-icon {
+        order: -1;
+        /* Icon ko upar bhej dega */
+        margin-bottom: 1rem;
+    }
+
+    .weather-icon img {
+        max-width: 200px;
+        /* Icon ka size chota kiya */
+    }
+
+    /* Font sizes ko mobile ke liye adjust kiya */
+    .city-name {
+        font-size: 1.5rem;
+        /* 24px */
+    }
+
+    .temperature-info .temperature {
+        font-size: 5rem;
+        /* 80px */
+        margin-top: 0.5rem;
+    }
+
+    .weather-details {
+        align-items: center;
+        /* Saara text center mein rakha */
+    }
+
+    /* Neeche ke cards ko 2x2 grid banaya */
+    .other-info {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns */
+        gap: 0.75rem;
+    }
+
+}
+
+/* Large Screen Styles */
+@media (min-width: 1200px) {
+    .main {
+        max-width: 1100px;
+        padding: 2rem;
+    }
+
+    .other-info {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+
+    .humidity,
+    .wind-speed,
+    .feelsLike,
+    .air-quality {
+        min-height: 7rem;
+    }
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        background-size: 200% 200%;
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-size: 300% 300%;
+        background-position: 100% 50%;
+    }
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+    <title>Weather App</title>
+</head>
+
+<body>
+    <!-- main section -->
+
+    <main id="main">
+
+        <div class="searchbar">
+            <input type="text" placeholder="Search City" id="city-input" autocomplete="off">
+            <button id="search-btn"><i class="fa fa-search"></i></button>
+        </div>
+        <div class="weather">
+
+            <div class="weather-info">
+                <div class="location-time">
+                    <h2></h2>
+                    <p></p>
+                    <p></p>
+                </div>
+
+                <div class="temp">
+                    <h1></h1>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="icon">
+                <img src="" alt="sun icon">
+            </div>
+        </div>
+
+
+
+        <div class="other-info">
+            <div class="feelsLike">
+                <i class="fa-solid fa-temperature-quarter"></i>
+                <h3>Feels Like: </h3>
+                <p></p>
+            </div>
+
+            <div class="humidity">
+                <i class="fas fa-water"></i>
+                <h3>Humidity: </h3>
+                <p></p>
+            </div>
+            <div class="wind-speed">
+                <i class="fas fa-wind"></i>
+                <h3>Wind Speed: </h3>
+                <p></p>
+            </div>
+            <div class="air-quality">
+                <i class="fa-solid fa-leaf"></i>
+                <h3>Air Quality: </h3>
+                <p></p>
+            </div>
+        </div>
+    </main>
+
+    <script src="./src/script.js"></script>
+</body>
+
+</html>

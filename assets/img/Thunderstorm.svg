@@ -1,0 +1,195 @@
+<svg viewBox="70 75 265 265" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- =================================================================== -->
+  <!-- ========================= DEFINITIONS =========================== -->
+  <!-- =================================================================== -->
+  <defs>
+    <!-- Storm Cloud Gradients -->
+    <radialGradient id="stormCloudGradient" cx="40%" cy="25%" r="80%">
+      <stop offset="0%" stop-color="#6B7280" />
+      <stop offset="40%" stop-color="#4B5563" />
+      <stop offset="70%" stop-color="#374151" />
+      <stop offset="100%" stop-color="#1F2937" />
+    </radialGradient>
+    
+    <radialGradient id="cloudShadow" cx="50%" cy="80%" r="70%">
+      <stop offset="0%" stop-color="#111827" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.7" />
+    </radialGradient>
+    
+    <!-- Lightning Gradients -->
+    <linearGradient id="lightningGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="30%" stop-color="#FDE047" />
+      <stop offset="70%" stop-color="#FACC15" />
+      <stop offset="100%" stop-color="#EAB308" />
+    </linearGradient>
+    
+    <linearGradient id="lightningHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#FEF08A" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#FACC15" stop-opacity="0.3" />
+    </linearGradient>
+    
+    <!-- Background Lightning Effect Gradient -->
+    <linearGradient id="bgLightningGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DBEAFE" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#BFDBFE" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#93C5FD" stop-opacity="0.4" />
+    </linearGradient>
+
+    <!-- Flash overlay gradient -->
+    <radialGradient id="flashGradient" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.6" />
+      <stop offset="50%" stop-color="#F0F9FF" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#DBEAFE" stop-opacity="0" />
+    </radialGradient>
+    
+    <!-- Filters for 3D Effects -->
+    <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="6" dy="12" stdDeviation="10" flood-color="#00000060"/>
+    </filter>
+    
+    <filter id="lightningGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="bgLightningGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="innerShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feOffset dx="2" dy="6"/>
+      <feGaussianBlur stdDeviation="4" result="offset-blur"/>
+      <feFlood flood-color="#1F2937" flood-opacity="0.5"/>
+      <feComposite in2="offset-blur" operator="in"/>
+      <feComposite in2="SourceGraphic" operator="over"/>
+    </filter>
+
+    <!-- Lightning animation styles -->
+    <style>
+      .bg-lightning {
+        animation: lightningStrike 2.5s ease-in-out infinite;
+      }
+
+      .secondary-lightning {
+        animation: mainLightningStrike 3s ease-in-out infinite;
+      }
+
+      .bg-lightning:nth-child(1) { animation-delay: 0s; }
+      .bg-lightning:nth-child(2) { animation-delay: 0.4s; }
+      .bg-lightning:nth-child(3) { animation-delay: 0.8s; }
+      .bg-lightning:nth-child(4) { animation-delay: 1.2s; }
+
+      @keyframes lightningStrike {
+        0%, 90%, 100% { 
+          opacity: 0; 
+        }
+        2% { 
+          opacity: 0.8; 
+        }
+        4% { 
+          opacity: 0; 
+        }
+        6% { 
+          opacity: 1; 
+        }
+        8% { 
+          opacity: 0; 
+        }
+      }
+
+      @keyframes mainLightningStrike {
+        0%, 85%, 100% { 
+          opacity: 0; 
+        }
+        3% { 
+          opacity: 1; 
+        }
+        5% { 
+          opacity: 0; 
+        }
+        7% { 
+          opacity: 0.9; 
+        }
+        9% { 
+          opacity: 0; 
+        }
+      }
+    </style>
+  </defs>
+  
+  <!-- =================================================================== -->
+  <!-- =================== BACKGROUND LIGHTNING EFFECTS ================== -->
+  <!-- =================================================================== -->
+  <g id="background-lightning-effects">
+    <path class="bg-lightning" transform="translate(320, 80)" d="M0,0 L-8,20 L-2,20 L-12,40 L-4,25 L-6,25 L4,0 Z" fill="url(#bgLightningGradient)" filter="url(#bgLightningGlow)" stroke="#BFDBFE" stroke-width="1"/>
+    <path class="bg-lightning" transform="translate(100, 150)" d="M0,0 L-6,15 L-1,15 L-10,35 L-2,18 L-4,18 L3,0 Z" fill="url(#bgLightningGradient)" filter="url(#bgLightningGlow)" stroke="#BFDBFE" stroke-width="1"/>
+    <path class="bg-lightning" transform="translate(310, 200)" d="M0,0 L-10,25 L-3,25 L-15,50 L-5,30 L-8,30 L5,0 Z" fill="url(#bgLightningGradient)" filter="url(#bgLightningGlow)" stroke="#BFDBFE" stroke-width="1"/>
+    <path class="bg-lightning" transform="translate(80, 280)" d="M0,0 L-5,12 L-1,12 L-8,25 L-2,15 L-3,15 L2,0 Z" fill="url(#bgLightningGradient)" filter="url(#bgLightningGlow)" stroke="#BFDBFE" stroke-width="1"/>
+  </g>
+
+  <!-- =================================================================== -->
+  <!-- ========================= MAIN STORM CLOUD ======================== -->
+  <!-- =================================================================== -->
+  <g id="main-cloud" transform="translate(200, 180)">
+    <!-- Shadow Layer -->
+    <g id="cloud-shadow-layer" transform="translate(4, 10)" opacity="0.8">
+      <ellipse cx="-70" cy="15" rx="55" ry="35" fill="url(#cloudShadow)"/>
+      <ellipse cx="0" cy="0" rx="80" ry="50" fill="url(#cloudShadow)"/>
+      <ellipse cx="65" cy="20" rx="50" ry="32" fill="url(#cloudShadow)"/>
+      <ellipse cx="30" cy="-25" rx="40" ry="28" fill="url(#cloudShadow)"/>
+      <ellipse cx="-40" cy="-20" rx="45" ry="32" fill="url(#cloudShadow)"/>
+    </g>
+    
+    <!-- Main Cloud Body -->
+    <g id="cloud-body-layer">
+      <ellipse cx="-70" cy="15" rx="55" ry="35" fill="url(#stormCloudGradient)" filter="url(#dropShadow)"/>
+      <ellipse cx="0" cy="0" rx="80" ry="50" fill="url(#stormCloudGradient)" filter="url(#dropShadow)"/>
+      <ellipse cx="65" cy="20" rx="50" ry="32" fill="url(#stormCloudGradient)" filter="url(#dropShadow)"/>
+      <ellipse cx="30" cy="-25" rx="40" ry="28" fill="url(#stormCloudGradient)" filter="url(#dropShadow)"/>
+      <ellipse cx="-40" cy="-20" rx="45" ry="32" fill="url(#stormCloudGradient)" filter="url(#dropShadow)"/>
+    </g>
+    
+    <!-- Cloud Highlights -->
+    <g id="cloud-highlights-layer" opacity="0.7">
+      <ellipse cx="-50" cy="-10" rx="25" ry="18" fill="#6B7280" opacity="0.6"/>
+      <ellipse cx="10" cy="-30" rx="20" ry="15" fill="#6B7280" opacity="0.4"/>
+    </g>
+    
+    <!-- Inner shadow for depth -->
+    <ellipse cx="0" cy="0" rx="80" ry="50" fill="none" filter="url(#innerShadow)"/>
+  </g>
+
+  <!-- =================================================================== -->
+  <!-- ======================= MAIN LIGHTNING BOLTS ====================== -->
+  <!-- =================================================================== -->
+  <g id="main-lightning-bolts">
+    <!-- Center Lightning Bolt -->
+    <g id="main-lightning-group" transform="translate(220, 140)">
+      <path d="M4,8 L-25,70 L-8,70 L-35,140 L-10,85 L-18,85 L12,8 Z" fill="#D97706" opacity="0.4" transform="translate(2, 4)"/>
+      <path d="M0,0 L-27,65 L-10,65 L-37,135 L-12,80 L-20,80 L8,0 Z" fill="url(#lightningGradient)" filter="url(#lightningGlow)"/>
+      <path d="M0,0 L-27,65 L-10,65 L-37,135 L-12,80 L-20,80 L8,0 Z" fill="url(#lightningHighlight)" opacity="0.7"/>
+      <path d="M-2,5 L-25,60 L-12,60 L-35,125 L-14,75 L-18,75 L6,5" stroke="#FFFFFF" stroke-width="2.5" fill="none" opacity="0.9"/>
+    </g>
+
+    <!-- Right Secondary Lightning Bolt -->
+    <g id="secondary-lightning-group" class="secondary-lightning" transform="translate(280, 250)" opacity="0.8">
+      <path d="M2,4 L-12,35 L-4,35 L-18,65 L-6,42 L-9,42 L6,4 Z" fill="#D97706" opacity="0.4" transform="translate(2, 4)"/>
+      <path d="M0,0 L-14,32 L-6,32 L-20,62 L-8,39 L-11,39 L4,0 Z" fill="url(#lightningGradient)" filter="url(#lightningGlow)"/>
+      <path d="M0,0 L-14,32 L-6,32 L-20,62 L-8,39 L-11,39 L4,0 Z" fill="url(#lightningHighlight)" opacity="0.7"/>
+      <path d="M-1,2 L-13,30 L-7,30 L-19,58 L-9,37 L-10,37 L3,2" stroke="#FFFFFF" stroke-width="1.5" fill="none" opacity="0.9"/>
+    </g>
+  </g>
+
+
+
+</svg>

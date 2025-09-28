@@ -1,0 +1,225 @@
+<!-- 
+  Ultra Realistic 3D Tornado - Background Improved by Gemini
+  - User's original tornado, debris, and lightning animations are UNTOUCHED.
+  - Background has been redesigned for a more dynamic and atmospheric feel.
+  - New Features: Animated volumetric clouds with a parallax effect and a breathing sky gradient.
+-->
+<svg viewBox="-300 -150 600 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- User's Original Gradients and Filters (No changes here) -->
+    <radialGradient id="tornadoMain" cx="30%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#1a1a1a" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#aaaaaa" stop-opacity="0.2" />
+    </radialGradient>
+    <radialGradient id="vortexInner" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="1" />
+      <stop offset="100%" stop-color="transparent" />
+    </radialGradient>
+    <radialGradient id="dustPro" cx="40%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#8B4513" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="transparent" />
+    </radialGradient>
+    <filter id="tornadoDepth" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur1" />
+      <feOffset dx="5" dy="5" result="offset" />
+      <feGaussianBlur stdDeviation="10" result="blur2" />
+      <feFlood flood-color="#000000" flood-opacity="0.4" result="shadow" />
+      <feComposite in="shadow" in2="blur2" operator="in" result="shadowBlur" />
+      <feGaussianBlur stdDeviation="20" result="atmosphere" />
+      <feMerge>
+        <feMergeNode in="atmosphere" />
+        <feMergeNode in="shadowBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="lightningGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="debrisBlur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" />
+    </filter>
+    
+    <!-- === NEW & IMPROVED BACKGROUND DEFINITIONS === -->
+
+    <!-- New animated background gradient -->
+    <radialGradient id="dynamicStormBg" cx="50%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#4F547D" />
+      <stop offset="50%" stop-color="#16213e" />
+      <stop offset="100%" stop-color="#0f0f23" />
+    </radialGradient>
+
+    <!-- New gradient for volumetric clouds -->
+    <radialGradient id="volumetricCloudGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#696969" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#1a1a2e" stop-opacity="0.5" />
+    </radialGradient>
+    
+    <!-- Advanced filter for realistic cloud texture -->
+    <filter id="cloudTexture" x="-50%" y="-50%" width="200%" height="200%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.03" numOctaves="4" result="turbulence"/>
+        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="10" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+
+    <!-- New animations for background elements -->
+    <style>
+        .sky-bg {
+            animation: breathe 15s ease-in-out infinite alternate;
+        }
+        .cloud-back {
+            animation: drift-right 40s linear infinite alternate;
+        }
+        .cloud-mid {
+            animation: drift-left 30s linear infinite alternate;
+        }
+        @keyframes breathe {
+            from { opacity: 0.8; transform: scale(1); }
+            to { opacity: 1; transform: scale(1.1); }
+        }
+        @keyframes drift-right {
+            from { transform: translateX(-50px); }
+            to { transform: translateX(50px); }
+        }
+        @keyframes drift-left {
+            from { transform: translateX(30px); }
+            to { transform: translateX(-30px); }
+        }
+    </style>
+
+  </defs>
+
+  <!-- === NEW & IMPROVED DYNAMIC BACKGROUND === -->
+  <rect class="sky-bg" x="-300" y="-150" width="600" height="700" fill="url(#dynamicStormBg)" />
+
+  <!-- New animated, volumetric clouds -->
+  <g opacity="0.6" filter="url(#cloudTexture)">
+    <!-- Back layer clouds (slower animation) -->
+    <g class="cloud-back">
+        <path d="M-250 -50 C-150 -120, 150 -120, 250 -50 C150 0, -150 0, -250 -50 Z" fill="url(#volumetricCloudGrad)" opacity="0.6" />
+    </g>
+    <!-- Mid layer clouds (faster animation) -->
+    <g class="cloud-mid">
+        <path d="M-200 20 C-100 -80, 100 -80, 200 20 C100 80, -100 80, -200 20 Z" fill="url(#volumetricCloudGrad)" opacity="0.8" />
+    </g>
+  </g>
+
+  <!-- ======================================================= -->
+  <!-- USER'S ORIGINAL CODE STARTS HERE (UNCHANGED)            -->
+  <!-- ======================================================= -->
+
+  <!-- Dramatic lightning system -->
+  <g filter="url(#lightningGlow)">
+    <path d="M-180 -30 L-165 10 L-175 25 L-160 55 L-170 75 L-155 95 L-165 115"
+          stroke="#FFFFFF" stroke-width="5" fill="none" opacity="0">
+      <animate attributeName="opacity" values="0;1;0;0;0;0;0;1;0;0;0" dur="7s" repeatCount="indefinite" />
+      <animate attributeName="stroke-width" values="5;8;5" dur="0.3s" repeatCount="indefinite" />
+    </path>
+    <path d="M170 -10 L155 30 L165 50 L150 80 L160 105 L145 130"
+          stroke="#E6E6FA" stroke-width="3" fill="none" opacity="0">
+      <animate attributeName="opacity" values="0;0;1;0;0;0;1;0;0;0;0" dur="9s" repeatCount="indefinite" />
+    </path>
+    <path d="M0 -60 L-10 -20 L5 10 L-8 40"
+          stroke="#87CEEB" stroke-width="2" fill="none" opacity="0">
+      <animate attributeName="opacity" values="0;0;0;1;0;0;0;0;1;0" dur="11s" repeatCount="indefinite" />
+    </path>
+  </g>
+
+  <!-- Main tornado structure -->
+  <g transform="translate(0,50)">
+    <ellipse cx="0" cy="450" rx="140" ry="30" fill="url(#dustPro)" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="5s" repeatCount="indefinite" />
+      <animate attributeName="rx" values="140;160;140" dur="8s" repeatCount="indefinite" />
+    </ellipse>
+    <g filter="url(#tornadoDepth)">
+      <path d="M -120 450 C -110 420, -95 380, -85 340 C -75 300, -65 260, -55 220 C -45 180, -38 140, -32 100 C -26 60, -22 30, -18 10 C -15 -5, -12 -15, -8 -20 L 8 -20 C 12 -15, 15 -5, 18 10 C 22 30, 26 60, 32 100 C 38 140, 45 180, 55 220 C 65 260, 75 300, 85 340 C 95 380, 110 420, 120 450 Z" fill="url(#tornadoMain)" opacity="0.9" />
+      <path d="M -80 450 C -72 420, -62 380, -55 340 C -48 300, -42 260, -36 220 C -30 180, -25 140, -22 100 C -18 60, -15 30, -12 10 C -10 -5, -8 -15, -5 -20 L 5 -20 C 8 -15, 10 -5, 12 10 C 15 30, 18 60, 22 100 C 25 140, 30 180, 36 220 C 42 260, 48 300, 55 340 C 62 380, 72 420, 80 450 Z" fill="url(#tornadoMain)" opacity="0.7" />
+      <g>
+        <animateTransform attributeName="transform" type="rotate" values="0;360" dur="6s" repeatCount="indefinite" />
+        <path d="M -40 450 C -36 420, -30 380, -26 340 C -22 300, -18 260, -15 220 C -12 180, -10 140, -8 100 C -6 60, -5 30, -4 10 C -3 -5, -2 -15, -1 -20 L 1 -20 C 2 -15, 3 -5, 4 10 C 5 30, 6 60, 8 100 C 10 140, 12 180, 15 220 C 18 260, 22 300, 26 340 C 30 380, 36 420, 40 450 Z" fill="url(#vortexInner)" opacity="1" />
+      </g>
+    </g>
+
+    <!-- Debris system -->
+    <g>
+      <g filter="url(#debrisBlur)">
+        <rect x="60" y="280" width="12" height="8" fill="#8B0000" rx="2" opacity="0.9">
+          <animateTransform attributeName="transform" type="translate" values="0,0;-20,-60;10,-30;-15,20;0,0" dur="8s" repeatCount="indefinite" />
+          <animateTransform attributeName="transform" type="rotate" values="0;180;360" dur="8s" repeatCount="indefinite" additive="sum" />
+        </rect>
+        <rect x="-75" y="350" width="10" height="6" fill="#4B0082" rx="1" opacity="0.8">
+          <animateTransform attributeName="transform" type="translate" values="0,0;30,-80;-10,-40;20,10;0,0" dur="10s" repeatCount="indefinite" />
+          <animateTransform attributeName="transform" type="rotate" values="0;-270;0" dur="10s" repeatCount="indefinite" additive="sum" />
+        </rect>
+      </g>
+      <g>
+        <rect x="85" y="320" width="4" height="20" fill="#654321" rx="1" opacity="0.9">
+          <animateTransform attributeName="transform" type="translate" values="0,0;-40,-100;15,-50;-25,30;0,0" dur="12s" repeatCount="indefinite" />
+          <animateTransform attributeName="transform" type="rotate" values="0;360;720" dur="12s" repeatCount="indefinite" additive="sum" />
+        </rect>
+        <rect x="-90" y="380" width="3" height="15" fill="#8B4513" rx="1" opacity="0.8" />
+        <rect x="50" y="200" width="2" height="12" fill="#2F4F4F" rx="1" opacity="0.7">
+          <animateTransform attributeName="transform" type="rotate" values="0;360" dur="6s" repeatCount="indefinite" />
+        </rect>
+      </g>
+      <g opacity="0.8">
+        <polygon points="0,0 6,3 5,8 -1,5" transform="translate(70,250)" fill="#8B4513">
+          <animateTransform attributeName="transform" type="translate" values="70,250;20,150;80,100;30,200;70,250" dur="7s" repeatCount="indefinite" />
+          <animateTransform attributeName="transform" type="rotate" values="0;540" dur="7s" repeatCount="indefinite" additive="sum" />
+        </polygon>
+        <circle cx="-60" cy="300" r="4" fill="#696969" opacity="0.9">
+          <animateTransform attributeName="transform" type="translate" values="0,0;50,-120;-20,-60;30,40;0,0" dur="9s" repeatCount="indefinite" />
+        </circle>
+        <ellipse cx="40" cy="400" rx="3" ry="5" fill="#CD853F" opacity="0.7" />
+      </g>
+      <g opacity="0.6">
+        <circle cx="30" cy="420" r="1.5" fill="url(#dustPro)">
+          <animateTransform attributeName="transform" type="translate" values="0,0;-15,-80;8,-40;-12,20;0,0" dur="4s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="-45" cy="380" r="1" fill="url(#dustPro)" />
+        <circle cx="65" cy="460" r="2" fill="url(#dustPro)" opacity="0.8" />
+        <circle cx="-25" cy="400" r="1.2" fill="url(#dustPro)" opacity="0.7" />
+        <circle cx="20" cy="300" r="0.8" fill="#DEB887" opacity="0.5">
+          <animateTransform attributeName="transform" type="translate" values="0,0;-8,-40;5,-20;-6,10;0,0" dur="6s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="-35" cy="320" r="0.6" fill="#DEB887" opacity="0.4" />
+        <circle cx="45" cy="340" r="0.9" fill="#DEB887" opacity="0.6" />
+      </g>
+    </g>
+  </g>
+
+  <!-- Ground dust and impact effects -->
+  <g>
+    <ellipse cx="0" cy="520" rx="160" ry="20" fill="url(#dustPro)" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="6s" repeatCount="indefinite" />
+    </ellipse>
+    <ellipse cx="0" cy="525" rx="120" ry="15" fill="#CD853F" opacity="0.6" />
+    <ellipse cx="0" cy="530" rx="80" ry="10" fill="#DEB887" opacity="0.5">
+      <animate attributeName="opacity" values="0.5;0.8;0.5" dur="4s" repeatCount="indefinite" />
+    </ellipse>
+    <rect x="-20" y="515" width="3" height="2" fill="#654321" opacity="0.7" />
+    <rect x="15" y="518" width="2" height="1.5" fill="#8B4513" opacity="0.6" />
+    <circle cx="-35" cy="520" r="1.5" fill="#696969" opacity="0.8" />
+    <circle cx="40" cy="522" r="1" fill="#A0522D" opacity="0.7" />
+  </g>
+
+  <!-- Atmospheric pressure waves -->
+  <g opacity="0.25">
+    <circle cx="0" cy="300" r="200" fill="none" stroke="#CCCCCC" stroke-width="1">
+      <animate attributeName="r" values="200;240;200" dur="10s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.25;0.4;0.25" dur="8s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="0" cy="300" r="170" fill="none" stroke="#999999" stroke-width="0.8">
+      <animate attributeName="r" values="170;210;170" dur="12s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.3;0.5;0.3" dur="9s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- Atmospheric glow around tornado -->
+  <circle cx="0" cy="300" r="150" fill="none" stroke="#666666" stroke-width="0.5" opacity="0.2">
+    <animate attributeName="opacity" values="0.2;0.4;0.2" dur="7s" repeatCount="indefinite" />
+  </circle>
+
+</svg>
