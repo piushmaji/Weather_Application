@@ -21,7 +21,7 @@ You can check a live demo here:
 
 ## Screenshots 📸
 ![Weather App Screenshot](assets/screenshot/2.png)
-![Weather App Screenshot](assets/screenshot/v1.mov)
+![Weather App Screenshot](assets/screenshot/1.png)
 ![Weather App Screenshot](assets/screenshot/3.png)
 
 
